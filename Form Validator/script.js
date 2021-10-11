@@ -65,11 +65,9 @@ function checkPasswordMatch(input1, input2) {
 
 form.addEventListener('submit', function(e) {
     e.preventDefault()
-
     checkRequired([username, email, password, confirmPassword])
     checkLength(username, 3, 15)
     checkLength(password, 8, 20)
     checkEmail(email)
     checkPasswordMatch(password, confirmPassword)
-
 })
