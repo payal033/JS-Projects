@@ -6,12 +6,11 @@ const amountEl_two = document.getElementById("amount-two");
 const swap = document.getElementById("swap")
 const rateEl = document.getElementById("rate")
 
-
 function calculate() {
     const currencyOne = currencyEl_one.value
     const currencyTwo = currencyEl_two.value
 
-    fetch(`https://v6.exchangerate-api.com/v6/f22b19b2c4c610dea24c41b1/latest/${currencyOne}`)
+    fetch(`https://v6.exchangerate-api.com/v6/your_api_key/latest/${currencyOne}`)
     .then(res => res.json())
     .then(data => {
         // console.log(data)
