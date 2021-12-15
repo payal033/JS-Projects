@@ -4,10 +4,22 @@ const expenseEl = document.getElementById('money-minus')
 const list = document.getElementById('list')
 const text = document.getElementById('text')
 const amount = document.getElementById('amount')
+const incomeBtn = document.getElementById('income-btn')
+const expenseBtn = document.getElementById('expense-btn')
 
 const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'))
 
 let transactions = localStorage.getItem('transactions') !== null ? localStorageTransactions : []
+
+function checkType(value) {
+  if (value === "+" && expenseBtn.classList.contains('selected')) {
+    incomeBtn.classList.add("selected");
+    expenseBtn.classList.remove("selected");
+  } else if (value === "-" && incomeBtn.classList.contains('selected')){
+    expenseBtn.classList.add("selected");
+    incomeBtn.classList.remove("selected");
+  }
+}
 
 function addTransaction(e) {
     e.preventDefault()
@@ -17,7 +29,7 @@ function addTransaction(e) {
         const transaction = {
             id: generateID(),
             text: text.value,
-            amount: +amount.value
+            amount: incomeBtn.classList.contains('selected') ? +amount.value : +(amount.value * -1)
         }
 
         transactions.push(transaction)
@@ -43,9 +55,8 @@ function removeTransaction(id) {
     init()
 }
 
-// add transactions to 
+// add transactions to DOM
 function addTransactionsDOM(transaction) {
-    // get sign
     const sign = transaction.amount > 0 ? '+' : '-';
     const item = document.createElement('li')
     // add class based on value

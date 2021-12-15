@@ -99,6 +99,34 @@ input[type='text'], input[type='number'] {
     cursor: pointer;
 }
 
+.select-btn {
+    display: flex;
+}
+
+.income-btn , .expense-btn{
+    box-shadow: var(--box-shadow);
+    border: 0;
+    font-size: 15px;
+    padding: 10px;
+    cursor: pointer;
+    background: transparent;
+}
+
+.income-btn {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.expense-btn {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.income-btn.selected, .expense-btn.selected {
+    background-color: #9c88ff;
+    color: #fff;
+}
+
 .btn:focus, .delete-btn:focus {
     outline: 0;
 }
