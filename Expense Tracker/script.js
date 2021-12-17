@@ -6,10 +6,22 @@ const text = document.getElementById('text')
 const amount = document.getElementById('amount')
 const incomeBtn = document.getElementById('income-btn')
 const expenseBtn = document.getElementById('expense-btn')
+// modal
+const close = document.getElementById('close');
+const modal = document.getElementById("modal");
+const updatebtn = document.getElementById("updatebtn"); 
+const updatetext = document.getElementById("modaltext");
+const updateamount = document.getElementById("modalamount");
 
-const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'))
+const localStorageTransactions = JSON.parse(
+        localStorage.getItem("transactions")
+      );
 
-let transactions = localStorage.getItem('transactions') !== null ? localStorageTransactions : []
+let transactions =
+        localStorage.getItem("transactions") !== null
+          ? localStorageTransactions
+          : [];
+
 
 function checkType(value) {
   if (value === "+" && expenseBtn.classList.contains('selected')) {
@@ -55,6 +67,10 @@ function removeTransaction(id) {
     init()
 }
 
+function showModal() {
+  modal.classList.add('show-modal')
+}
+
 // add transactions to DOM
 function addTransactionsDOM(transaction) {
     const sign = transaction.amount > 0 ? '+' : '-';
@@ -62,8 +78,13 @@ function addTransactionsDOM(transaction) {
     // add class based on value
     item.classList.add(transaction.amount > 0 ? 'plus' : 'minus')
     item.innerHTML = `
-    ${transaction.text} <span>${sign}${Math.abs(transaction.amount)}</span> <button class="delete-btn" onclick="removeTransaction(${transaction.id})">x</button>
-    `
+    <div id="open" onclick="showModal()"><p>${
+      transaction.text
+    }</p><span>${sign}${Math.abs(transaction.amount)}</span></div>
+    <button class="delete-btn" onclick="removeTransaction(${
+      transaction.id
+    })"><i class="fa fa-times"></i></button>
+    `;
     list.appendChild(item)
 }
 
@@ -96,3 +117,11 @@ function init() {
 init()
 
 form.addEventListener('submit', addTransaction)
+
+close.addEventListener("click", () => {
+  modal.classList.remove("show-modal");
+});
+
+window.addEventListener("click", (e) =>
+  e.target == modal ? modal.classList.remove("show-modal") : false
+);

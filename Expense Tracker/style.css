@@ -36,8 +36,11 @@ h3 {
 }
 
 h4 {
-    margin: 0;
-    text-transform: uppercase;
+    margin: 10px 0;
+    margin-top: 0;
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 10px;
+    font-size: 19px;
 }
 
 .inc-exp-container {
@@ -93,7 +96,7 @@ input[type='text'], input[type='number'] {
     border: 0;
     display: block;
     font-size: 16px;
-    margin: 10px 0 30px;
+    margin: 18px 0;
     padding: 10px;
     width: 100%;
     cursor: pointer;
@@ -146,6 +149,17 @@ input[type='text'], input[type='number'] {
     position: relative;
     padding: 10px;
     margin: 10px 0;
+    cursor: pointer;
+}
+
+#open {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#open p {
+    margin: 0;
 }
 
 .list li.plus {
@@ -175,4 +189,82 @@ input[type='text'], input[type='number'] {
 
 .list li:hover .delete-btn {
     opacity: 1;
+}
+
+/* Modal  */
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.modal-container.show-modal {
+    display: block;
+}
+
+.modal {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    width: 400px;
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+}
+
+.modal-header {
+    background: var(--primary-color);
+    color: #000;
+    padding-top: 13px;
+    padding-left: 13px;
+    padding-right: 13px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    padding-bottom: 0px;
+}
+
+.modal-header h3 {
+    margin: 0;
+}
+
+.close-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    font-size: 20px;
+    border: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.modal-content {
+    padding: 13px 20px;
+    font-weight: 400;
+}
+
+.modal-content p {
+    margin: 0;
+    color: #9c88ff;
+    font-size: 15px;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
