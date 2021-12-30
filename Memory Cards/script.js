@@ -18,22 +18,6 @@ const cardsEl = []
 
 const cardsData = getCardsData()
 
-// Store card data
-// const cardsData = [
-//     {
-//         question: 'What must a variable begin with?',
-//         answer: 'A letter, $ or _'
-//     },
-//     {
-//         question: 'What is a variable',
-//         answer: 'Container for a piece of data'
-//     },
-//     {
-//         question: 'Example of variable',
-//         answer: 'thisISaVaribale'
-//     }
-// ]
-
 // creat all cards
 function createCards() {
     cardsData.forEach((data, index) => createCard(data,index))
