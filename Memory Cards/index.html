@@ -18,6 +18,10 @@
             Add New Card
         </button>
     </h1>
+    <!-- <div class="container-two" id="container-two">
+      
+    </div> -->
+   
     <div id="cards-container" class="cards">
         <!-- <div class="card active">
             <div class="inner-card">
@@ -30,10 +34,20 @@
             </div>
         </div> -->
     </div>
-    <div class="navigation">
-        <button id="prev" class="nav-btn"><i class="fas fa-arrow-left"></i></button>
-        <p id="current"></p>
-        <button id="next" class="nav-btn"><i class="fas fa-arrow-right"></i></button>
+    <div class="container-two">
+        <button id="delete-card" class="delete btn">
+            <i class="fas fa-trash"></i>
+        </button>
+        <div class="navigation">
+            <button id="prev" class="nav-btn">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <p id="current"></p>
+            <button id="next" class="nav-btn">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+        <input class="slider" id="opacity" type="range" min="0" max="1" step="0.1">
     </div>
 
     <div id="add-container" class="add-container">

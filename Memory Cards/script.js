@@ -9,6 +9,8 @@ const answerEl = document.getElementById('answer')
 const addCardbtn = document.getElementById('add-card')
 const clearbtn = document.getElementById('clear')
 const addContainer = document.getElementById('add-container')
+const bgopacity = document.getElementById("opacity");
+const deletebtn = document.getElementById("delete-card");
 
 // keep track of current card
 let currentActivecard = 0
@@ -23,8 +25,18 @@ function createCards() {
     cardsData.forEach((data, index) => createCard(data,index))
 }
 
+// update bg value
+function updateCardBG(bgvalue) {
+    cardsEl.forEach((card) => {
+        const innerEl = card.childNodes[1]
+        innerEl.style.backgroundColor = `rgba(255, 255, 168, ${bgvalue})`
+    })
+}
+
 // create single card
 function createCard(data, index) {
+    const localbgvalue = localStorage.getItem("bgopacity");
+    bgopacity.value = localbgvalue;
     const card = document.createElement('div')
     card.classList.add('card')
     
@@ -33,7 +45,7 @@ function createCard(data, index) {
     }
 
     card.innerHTML = `
-    <div class="inner-card">
+    <div class="inner-card" style="background-color:rgba(255, 255, 168, ${localbgvalue});">
         <div class="inner-card-front">
             <p>${data.question}</p>
         </div>
@@ -65,6 +77,7 @@ function getCardsData() {
 // add card to local
 function setCardsData(cards) {
     localStorage.setItem('cards', JSON.stringify(cards))
+    localStorage.setItem("bgopacity", bgopacity.value);
     window.location.reload()
 }
 
@@ -126,3 +139,15 @@ clearbtn.addEventListener('click' , () => {
     cardsContainer.innerHTML = ''
     window.location.reload()
 })
+
+// get background value using range
+bgopacity.addEventListener("change", (e) => {
+    localStorage.setItem("bgopacity", e.target.value);
+    updateCardBG(e.target.value)
+});
+
+
+
+
+
+

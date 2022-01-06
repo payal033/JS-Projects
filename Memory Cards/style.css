@@ -53,6 +53,21 @@ h1 button {
     left: 30px;
 }
 
+.container-two {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    height: 40px;
+    max-width: 100%;
+}
+
+.delete {
+    border: none;
+    margin-top: 0;
+    background-color: transparent;
+}
+
 .cards {
     perspective: 1000px;
     position: relative;
@@ -109,7 +124,6 @@ h1 button {
     justify-content: center;
     height: 100%;
     width: 100%;
-    background: #fff;
 }
 
 .inner-card-front {
@@ -130,12 +144,13 @@ h1 button {
     right: 10px;
     font-weight: bold;
     font-size: 16px;
-    color: #ddd;
+    color: #000;
 }
 
 .navigation {
     display: flex;
     margin: 20px 0;
+    padding-left: 55px;
 }
 
 .navigation .nav-btn {
@@ -188,5 +203,6 @@ h1 button {
     min-width: 500px;
     max-width: 100%;
 }
+
 
 
