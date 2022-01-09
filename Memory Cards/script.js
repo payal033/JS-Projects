@@ -140,6 +140,21 @@ clearbtn.addEventListener('click' , () => {
     window.location.reload()
 })
 
+// delete single card
+deletebtn.addEventListener('click', () => {
+    if(cardsData.length === 0) {
+        alert('There is no card to delete!')
+        return
+    }
+    const confirmAns = confirm('Are you sure you want to delete this card?')
+    if(confirmAns) {
+        const deleteCard = cardsData.splice(currentActivecard, 1);
+        cardsEl.innerHTML = "";
+        setCardsData(cardsData);
+        createCards(cardsData);
+    }
+})
+
 // get background value using range
 bgopacity.addEventListener("change", (e) => {
     localStorage.setItem("bgopacity", e.target.value);
